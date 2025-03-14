@@ -6,7 +6,7 @@ import seaborn as sns
 from bs4 import BeautifulSoup
 
 
-class Filepath:
+class ElectionResultsFilepath:
     OAKLAND_COUNTY = 'G:/election_data/OaklandCountyElectionResults/'
 
 
@@ -71,7 +71,7 @@ def _find_millage_without_text(topic: str) -> dict:
 
 
 def read_file(year: int | str) -> BeautifulSoup:
-    page = BeautifulSoup(open(f'{Filepath.OAKLAND_COUNTY}/detail{year}.xml').read(), 'xml')
+    page = BeautifulSoup(open(f'{ElectionResultsFilepath.OAKLAND_COUNTY}/detail{year}.xml').read(), 'xml')
     results_elem = page.find('ElectionResult')
     return results_elem
 
