@@ -15,9 +15,9 @@ class MajorParty(str, Enum):
     REP = 'REP'
 
 
-class ProposalOption(str, Enum):
-    YES = 'Yes'
-    NO = 'No'
+class ProposalOption:
+    YES: str = 'Yes'
+    NO: str = 'No'
 
 
 class _Office22Statewide:
