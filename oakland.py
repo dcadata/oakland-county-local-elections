@@ -1,5 +1,4 @@
 import re
-from enum import Enum
 
 import pandas as pd
 import seaborn as sns
@@ -10,9 +9,9 @@ class ElectionResultsFilepath:
     OAKLAND_COUNTY = 'G:/election_data/OaklandCountyElectionResults/'
 
 
-class MajorParty(str, Enum):
-    DEM = 'DEM'
-    REP = 'REP'
+class MajorParty:
+    DEM: str = 'DEM'
+    REP: str = 'REP'
 
 
 class ProposalOption:
@@ -100,7 +99,7 @@ def filter_office(results_elem: BeautifulSoup, office: dict, party: str = None) 
     results = pd.DataFrame(data)
     results.votes = results.votes.map(int)
     if party:
-        results = results[results.party.isin(tuple(MajorParty))].drop(columns='candidate')
+        results = results[results.party.isin((MajorParty.DEM, MajorParty.REP))].drop(columns='candidate')
         results = _aggregate_2024(results)
         results = results[results.party == party].copy()
     else:
