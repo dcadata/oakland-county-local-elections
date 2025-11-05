@@ -127,7 +127,7 @@ def filter_millage(results_elem: BeautifulSoup, millage: dict) -> pd.DataFrame:
     return _aggregate_2024(results)
 
 
-def _assign_parties_to_nonpartisan(results: pd.DataFrame, progressives: iter, conservatives: iter) -> pd.DataFrame:
+def _assign_parties_to_nonpartisan(results: pd.DataFrame, progressives: tuple, conservatives: tuple) -> pd.DataFrame:
     results.loc[results.candidate.isin(progressives), 'party'] = MajorParty.DEM
     results.loc[results.candidate.isin(conservatives), 'party'] = MajorParty.REP
     return results.dropna(subset=['party'])
