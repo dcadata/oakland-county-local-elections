@@ -251,6 +251,7 @@ def analyze_countywide_offices(results_elem: BeautifulSoup) -> pd.DataFrame:
 def analyze_millage_vs_dem(results_elem: BeautifulSoup, party: str) -> pd.DataFrame:
     millage_topics = (
         'Police',
+        'Public Safety',
         'Senior Services',
         'Fire',
         'School|Educ',
